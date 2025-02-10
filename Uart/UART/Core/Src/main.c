@@ -75,6 +75,40 @@ void UART_TxRxInitialise(void)
     // 6. Set baud rate (9600 baud, assuming 16MHz clock)
     USART1->BRR = 0x682;  // Baud rate 9600, clk=16MHz
 }
+
+// Function to send a character
+void UART_SendChar(char ch) {
+    while (!(USART1->SR & (1 << 7)))  // Wait for TXE (bit 7)
+        ;
+    USART1->DR = ch;
+}
+
+// Function to send a string
+void UART_SendString(char *str) {
+    while (*str) {
+        UART_SendChar(*str++);
+    }
+}
+
+// Function to receive a string
+// Function to receive a string
+void UART_ReceiveString(char *buffer, uint16_t maxLen) {
+    uint16_t i = 0;
+    char ch;
+
+    while (i < (maxLen - 1)) {
+        while (!(USART1->SR & (1 << 5)))  // Wait for RXNE (bit 5)
+            ;
+        ch = USART1->DR;  // Read data
+
+        if (ch == '\n' || ch == '\r')  // Stop at newline or carriage return
+            break;
+
+        buffer[i++] = ch;
+    }
+
+    buffer[i] = '\0';  // Null-terminate the string
+}
 /* USER CODE END 0 */
 
 /**
@@ -114,19 +148,13 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	    char rxBuf[20];
+	  	UART_ReceiveString(rxBuf, 20);  // Receive string
+		UART_SendString("Received: ");
+		UART_SendString(rxBuf);  // Echo received string
+		UART_SendString("\r\n");
     /* USER CODE BEGIN 3 */
-		uint8_t received_data = 0;
 
-		// Wait for data to be received
-		while (!(USART1->SR & (1 << 5)))
-			;  // Check RXNE (bit 5)
-		received_data = USART1->DR;  // Read data
-
-		// Wait for TX buffer to be empty
-		while (!(USART1->SR & (1 << 7)))
-			;  // Check TXE (bit 7)
-		USART1->DR = received_data;  // Transmit received data
   }
   /* USER CODE END 3 */
 }
