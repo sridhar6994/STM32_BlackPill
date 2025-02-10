@@ -40,7 +40,6 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 
@@ -48,17 +47,33 @@ UART_HandleTypeDef huart1;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-// Function to send a string via UART
-void UART_SendString(char *str) {
-    HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
+void UART_TxRxInitialise(void)
+{
+    // 1. Enable USART1 clock
+    RCC->APB2ENR |= (1 << 4);
+
+    // 2. Enable GPIOA clock
+    RCC->AHB1ENR |= (1 << 0);
+
+    // 3. Set PA9 (TX) and PA10 (RX) as Alternate Function (AF7 for USART1)
+    GPIOA->MODER &= ~((3 << (9 * 2)) | (3 << (10 * 2)));  // Clear mode bits
+    GPIOA->MODER |=  ((2 << (9 * 2)) | (2 << (10 * 2)));  // Set AF mode
+
+    // 4. Set PA9 and PA10 to AF7 (USART1)
+    GPIOA->AFR[1] &= ~((0xF << (2 * 4)) | (0xF << (1 * 4)));  // Clear AF bits
+    GPIOA->AFR[1] |=  ((7 << (2 * 4)) | (7 << (1 * 4)));  // Set 7(USART1) for A9 & A10 pins
+
+    // 5. Enable USART1, TX, and RX
+    USART1->CR1 = (1 << 13) | (1 << 3) | (1 << 2);  // Enable USART, TX, RX
+
+    // 6. Set baud rate (9600 baud, assuming 16MHz clock)
+    USART1->BRR = 0x682;  // Baud rate 9600, clk=16MHz
 }
 /* USER CODE END 0 */
 
@@ -90,10 +105,8 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  UART_SendString("Hi\n");  // Send data
+  UART_TxRxInitialise();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,8 +114,19 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  HAL_Delay(1000);  // Wait 1 second
+
     /* USER CODE BEGIN 3 */
+		uint8_t received_data = 0;
+
+		// Wait for data to be received
+		while (!(USART1->SR & (1 << 5)))
+			;  // Check RXNE (bit 5)
+		received_data = USART1->DR;  // Read data
+
+		// Wait for TX buffer to be empty
+		while (!(USART1->SR & (1 << 7)))
+			;  // Check TXE (bit 7)
+		USART1->DR = received_data;  // Transmit received data
   }
   /* USER CODE END 3 */
 }
@@ -146,56 +170,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-}
-
-/**
-  * @brief USART1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART1_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART1_Init 0 */
-
-  /* USER CODE END USART1_Init 0 */
-
-  /* USER CODE BEGIN USART1_Init 1 */
-
-  /* USER CODE END USART1_Init 1 */
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART1_Init 2 */
-
-  /* USER CODE END USART1_Init 2 */
-
-}
-
-/**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_GPIO_Init(void)
-{
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
-
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
