@@ -52,3 +52,246 @@ arm-none-eabi-size  ADC.elf
    5848	     12	   1572	   7432	   1d08	ADC.elf
 Finished building: default.size.stdout
  
+16:24:18 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:126:19: error: 'adc_values1' undeclared (first use in this function); did you mean 'adc_value1'?
+  126 |                   adc_values1 = ADC1->DR;  // Read PA0 (First conversion)
+      |                   ^~~~~~~~~~~
+      |                   adc_value1
+../Core/Src/main.c:126:19: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:129:19: error: 'adc_values2' undeclared (first use in this function); did you mean 'adc_value2'?
+  129 |                   adc_values2 = ADC1->DR;  // Read PA1 (Second conversion)
+      |                   ^~~~~~~~~~~
+      |                   adc_value2
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:40:29: warning: 'adc_value2' defined but not used [-Wunused-variable]
+   40 | static uint16_t adc_value1, adc_value2;
+      |                             ^~~~~~~~~~
+../Core/Src/main.c:40:17: warning: 'adc_value1' defined but not used [-Wunused-variable]
+   40 | static uint16_t adc_value1, adc_value2;
+      |                 ^~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+16:24:41 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Adc\ADC\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC.elf
+ 
+arm-none-eabi-size  ADC.elf 
+arm-none-eabi-objdump -h -S ADC.elf  > "ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   5784	     12	   1572	   7368	   1cc8	ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADC.list
+ 
+16:24:53 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5784	     12	   1572	   7368	   1cc8	ADC.elf
+Finished building: default.size.stdout
+ 
+16:30:23 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5784	     12	   1572	   7368	   1cc8	ADC.elf
+Finished building: default.size.stdout
+ 
+16:31:13 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5784	     12	   1572	   7368	   1cc8	ADC.elf
+Finished building: default.size.stdout
+ 
+16:37:41 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:124:39: error: 'ADC_SR_EOS' undeclared (first use in this function); did you mean 'ADC_SR_EOC'?
+  124 |                   while (!(ADC1->SR & ADC_SR_EOS));  // EOS = End of Sequence
+      |                                       ^~~~~~~~~~
+      |                                       ADC_SR_EOC
+../Core/Src/main.c:124:39: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+16:38:40 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Adc\ADC\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC.elf
+ 
+arm-none-eabi-size  ADC.elf 
+arm-none-eabi-objdump -h -S ADC.elf  > "ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   5768	     12	   1572	   7352	   1cb8	ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADC.list
+ 
+16:39:09 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5768	     12	   1572	   7352	   1cb8	ADC.elf
+Finished building: default.size.stdout
+ 
+16:40:40 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Adc\ADC\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC.elf
+ 
+arm-none-eabi-size  ADC.elf 
+arm-none-eabi-objdump -h -S ADC.elf  > "ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   5784	     12	   1572	   7368	   1cc8	ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADC.list
+ 
+16:40:44 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5784	     12	   1572	   7368	   1cc8	ADC.elf
+Finished building: default.size.stdout
+ 
+16:40:50 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5784	     12	   1572	   7368	   1cc8	ADC.elf
+Finished building: default.size.stdout
+ 
+16:48:32 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Adc\ADC\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC.elf
+ 
+arm-none-eabi-size  ADC.elf 
+arm-none-eabi-objdump -h -S ADC.elf  > "ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   5704	     12	   1572	   7288	   1c78	ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADC.list
+ 
+16:50:53 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Adc\ADC\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC.elf
+ 
+arm-none-eabi-size  ADC.elf 
+arm-none-eabi-objdump -h -S ADC.elf  > "ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   5716	     12	   1572	   7300	   1c84	ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADC.list
+ 
+16:50:57 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5716	     12	   1572	   7300	   1c84	ADC.elf
+Finished building: default.size.stdout
+ 
+16:51:03 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5716	     12	   1572	   7300	   1c84	ADC.elf
+Finished building: default.size.stdout
+ 
+16:52:31 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Adc\ADC\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC.elf
+ 
+arm-none-eabi-size  ADC.elf 
+arm-none-eabi-objdump -h -S ADC.elf  > "ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   5716	     12	   1572	   7300	   1c84	ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADC.list
+ 
+16:52:35 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5716	     12	   1572	   7300	   1c84	ADC.elf
+Finished building: default.size.stdout
+ 
+16:52:41 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5716	     12	   1572	   7300	   1c84	ADC.elf
+Finished building: default.size.stdout
+ 
+16:54:14 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Adc\ADC\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC.elf
+ 
+arm-none-eabi-size  ADC.elf 
+arm-none-eabi-objdump -h -S ADC.elf  > "ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   5720	     12	   1572	   7304	   1c88	ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADC.list
+ 
+16:54:21 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5720	     12	   1572	   7304	   1c88	ADC.elf
+Finished building: default.size.stdout
+ 
+16:54:26 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5720	     12	   1572	   7304	   1c88	ADC.elf
+Finished building: default.size.stdout
+ 
+16:59:00 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "ADC.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Adc\ADC\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ADC.elf
+ 
+arm-none-eabi-size  ADC.elf 
+arm-none-eabi-objdump -h -S ADC.elf  > "ADC.list"
+   text	   data	    bss	    dec	    hex	filename
+   5816	     12	   1572	   7400	   1ce8	ADC.elf
+Finished building: default.size.stdout
+ 
+Finished building: ADC.list
+ 
+16:59:15 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5816	     12	   1572	   7400	   1ce8	ADC.elf
+Finished building: default.size.stdout
+ 
+17:00:21 **** Incremental Build of configuration Debug for project ADC ****
+make -j24 all 
+arm-none-eabi-size  ADC.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5816	     12	   1572	   7400	   1ce8	ADC.elf
+Finished building: default.size.stdout
+ 

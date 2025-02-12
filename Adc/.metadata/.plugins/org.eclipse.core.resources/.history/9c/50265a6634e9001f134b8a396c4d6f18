@@ -102,7 +102,6 @@ int main(void)
      GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
      HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-     ADC->CCR |= 1<<16;// PCLK2 divide by 4
      ADC1->CR2 = 0;
      ADC1->CR1 = (1<<8);//enable scan mode for multiple channel
      ADC1->CR2 |= ADC_CR2_ADON;// A2D on
@@ -131,7 +130,7 @@ int main(void)
 	          while (!(ADC1->SR & ADC_SR_EOC));  // Wait for second conversion
 	          adc_value2 = ADC1->DR;  // Read PA1 (Second conversion)
 
-	          HAL_Delay(10);
+//	          HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

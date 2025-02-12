@@ -131,7 +131,7 @@ int main(void)
 	          while (!(ADC1->SR & ADC_SR_EOC));  // Wait for second conversion
 	          adc_value2 = ADC1->DR;  // Read PA1 (Second conversion)
 
-	          HAL_Delay(10);
+//	          HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
