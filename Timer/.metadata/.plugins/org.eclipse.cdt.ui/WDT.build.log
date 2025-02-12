@@ -1,0 +1,10 @@
+19:07:23 **** Incremental Build of configuration Debug for project WDT ****
+make -j24 all 
+arm-none-eabi-size  WDT.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4972	     12	   1580	   6564	   19a4	WDT.elf
+Finished building: default.size.stdout
+ 
+
+19:07:24 Build Finished. 0 errors, 0 warnings. (took 295ms)
+
