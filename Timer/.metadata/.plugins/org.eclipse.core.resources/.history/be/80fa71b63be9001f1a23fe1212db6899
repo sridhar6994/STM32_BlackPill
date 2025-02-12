@@ -69,7 +69,7 @@ void TIM2_IRQHandler(void) {
     if (TIM2->SR & TIM_SR_UIF) {  // Check update interrupt flag
         TIM2->SR &= ~TIM_SR_UIF;  // Clear interrupt flag
         GPIOC->ODR ^= (1 << 13);  // Toggle PC13
-        TIM2->CNT = 900;//900 to 1000 is 100 milli seconds toggle LED
+        TIM2->CNT = 500;
     }
 }
 /* USER CODE END PV */
