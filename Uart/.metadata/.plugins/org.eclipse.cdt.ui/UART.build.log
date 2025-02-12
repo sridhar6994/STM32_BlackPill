@@ -1,29 +1,10 @@
-11:36:36 **** Incremental Build of configuration Debug for project UART ****
+14:52:22 **** Incremental Build of configuration Debug for project UART ****
 make -j24 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xC -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'UART_SendString':
-../Core/Src/main.c:61:48: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-   61 |     HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
-      |                                                ^~~~~~
-../Core/Src/main.c:21:1: note: include '<string.h>' or provide a declaration of 'strlen'
-   20 | #include "main.h"
-  +++ |+#include <string.h>
-   21 | 
-../Core/Src/main.c:61:48: warning: incompatible implicit declaration of built-in function 'strlen' [-Wbuiltin-declaration-mismatch]
-   61 |     HAL_UART_Transmit(&huart1, (uint8_t *)str, strlen(str), HAL_MAX_DELAY);
-      |                                                ^~~~~~
-../Core/Src/main.c:61:48: note: include '<string.h>' or provide a declaration of 'strlen'
-arm-none-eabi-gcc -o "UART.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Uart\UART\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UART.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: UART.elf
- 
 arm-none-eabi-size  UART.elf 
-arm-none-eabi-objdump -h -S UART.elf  > "UART.list"
    text	   data	    bss	    dec	    hex	filename
-  10532	     12	   1644	  12188	   2f9c	UART.elf
+   5060	     12	   1572	   6644	   19f4	UART.elf
 Finished building: default.size.stdout
  
-Finished building: UART.list
- 
 
-11:36:37 Build Finished. 0 errors, 2 warnings. (took 890ms)
+14:52:23 Build Finished. 0 errors, 0 warnings. (took 280ms)
 

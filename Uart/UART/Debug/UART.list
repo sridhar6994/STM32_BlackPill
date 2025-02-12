@@ -587,9 +587,9 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	    char rxBuf[20];
-	  	UART_ReceiveString(rxBuf, 20);  // Receive string
+	  	UART_ReceiveString(rxBuf, 10);  // Receive string
  800060e:	1d3b      	adds	r3, r7, #4
- 8000610:	2114      	movs	r1, #20
+ 8000610:	210a      	movs	r1, #10
  8000612:	4618      	mov	r0, r3
  8000614:	f7ff ffbe 	bl	8000594 <UART_ReceiveString>
 		UART_SendString("Received: ");
