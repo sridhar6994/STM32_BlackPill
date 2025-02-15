@@ -1,0 +1,10 @@
+../Drivers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
+../Core/Src/main.c:53:6:ADC1_Init	1
+../Core/Src/main.c:75:10:ADC_Read	2
+../Core/Src/main.c:83:6:UART_TxRxInitialise	1
+../Core/Src/main.c:104:6:UART_SendChar	2
+../Core/Src/main.c:109:6:USART1_IRQHandler	2
+../Core/Src/main.c:115:6:Timer1_PWM_Init	1
+../Core/Src/main.c:158:5:main	2
+../Core/Src/main.c:215:6:SystemClock_Config	3
+../Core/Src/main.c:260:6:Error_Handler	1
