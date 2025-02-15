@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;ADCtoPWM&apos;" deleteContents="false" description="Delete resource &apos;ADCtoPWM&apos;" element1="/ADCtoPWM" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1739611750158"/>
+</session>
