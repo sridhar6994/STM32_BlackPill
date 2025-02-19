@@ -1,0 +1,13 @@
+17:00:16 **** Build of configuration Debug for project RFID ****
+make -j24 all 
+arm-none-eabi-gcc -o "RFID.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\Training\Git\STM32_BlackPill\Rfid\RFID\STM32F401RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RFID.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: RFID.elf
+ 
+arm-none-eabi-size  RFID.elf 
+arm-none-eabi-objdump -h -S RFID.elf  > "RFID.list"
+   text	   data	    bss	    dec	    hex	filename
+  10500	     12	   1692	  12204	   2fac	RFID.elf
+Finished building: default.size.stdout
+ 
+Finished building: RFID.list
+ 
